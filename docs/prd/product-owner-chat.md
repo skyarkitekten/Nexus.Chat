@@ -1,14 +1,8 @@
 # PRD: Chat-Based Feature Definition & Collaboration
 
-This is a chat-based “feature definition and collaboration” workspace, where a chat UI is the medium for:
-
-1. **Discovering existing features** for a domain
-2. **Defining new ones** through conversation
-3. **Collaborating with others** to refine scope and requirements
-
 ## Summary
 
-A conversational workspace where product teams can explore existing features for a given product/domain, discuss potential additions, and collaboratively define new features — all within a single chat thread that integrates feature history, requirements, and decision context.
+A conversational workspace where product teams can explore existing features for a given product/domain, discuss potential additions, and collaboratively define new features — all within a single chat thread that integrates feature history, requirements, and decision context. We’re not just talking about a static backlog lookup; you’ve got an agent doing semantic + lexical search over historical feature data, then using RAG (retrieval-augmented generation) to draft new feature definitions and user stories.
 
 ### Narrative
 
@@ -16,7 +10,7 @@ Imagine walking into a new product team’s kickoff. Normally, you’d dig throu
 
 No more “Didn’t we already talk about this?” or “Where’s the doc for that?” Instead, the conversation *is* the record. When someone suggests a new feature, the system instantly drafts a scoped description. Stakeholders join in to refine details. In minutes, you’ve gone from idea to a ready-for-backlog feature, with all context preserved.
 
-It’s a living, breathing source of truth — and it lives where your team already works.
+It’s a living, breathing source of truth and it lives where your team already works. This chat isn’t just reactive, it’s contextually intelligent
 
 ---
 
@@ -37,31 +31,34 @@ We need a single place where the history of feature decisions, the current state
 ### Business Goals
 
 * Increase speed of feature definition from idea → scoped requirement.
-* Reduce duplicated or conflicting feature requests.
-* Improve collaboration between PMs, designers, and engineers.
+* Reduce duplicated or conflicting feature requests by auto-checking history.
+* Improve the clarity of product owners's vision and prepare engineering teams.
+* Increase stakeholder confidence in feature definitions by grounding them in existing work.
 * Boost adoption of our platform as the “source of truth” for product ideation.
 
 ### User Goals
 
-* Instantly see a list of existing features in a domain.
-* Understand the rationale and decision history behind features.
-* Propose and refine new features directly within chat.
-* Collaborate with teammates without switching tools.
+* Ask “What features already exist for [domain]?” and get a precise, AI-curated list.
+* Propose a feature and have the system immediately flag similar or related features.
+* Receive a complete first draft of the feature spec and user stories, generated from prior examples.
+* Collaborate on refining that draft directly in chat.
 
 ### Non-Goals
 
+* Fully automated feature approval — human review is required
 * Building full project management (sprints, tasks).
 * Automated feature scoring or prioritization (future possibility).
 * Real-time design mockups (integration could come later).
+* Generating visual designs (future scope).
 
 ---
 
 ## User Stories
 
-1. **As a PM**, I can ask the chat “What features exist for our checkout flow?” and get an organized list with details.
-2. **As a designer**, I can see previous discussions about a feature before making design decisions.
-3. **As an engineer**, I can clarify requirements in the same thread where the idea originated.
-4. **As a new team member**, I can quickly catch up on the domain’s features and their context without hunting through multiple tools.
+1. **As a PM**, I can propose a feature, and the system automatically surfaces similar past features and their decisions before drafting a new definition.
+2. **As a designer**, I can see how a similar feature was implemented before starting design work.
+3. **As an engineer**, I can see the historical technical considerations of similar features to avoid repeating mistakes.
+4. **As a new team member**, I can learn the product’s feature history through chat queries.
 
 ---
 
@@ -88,7 +85,7 @@ We need a single place where the history of feature decisions, the current state
 
 ### Technical Considerations
 
-* **Integrations**: Sync with Jira/Linear for pushing features to backlog.
+* **Integrations**: Sync with Azure DevOps/GitHub for pushing features to backlog.
 * **Data model**: Each chat linked to a domain, features stored with metadata and linked thread history.
 * **Search**: Indexed across chat logs + feature metadata for instant retrieval.
 * **Permissions**: Role-based access to certain domains and feature creation rights.
@@ -98,10 +95,10 @@ We need a single place where the history of feature decisions, the current state
 
 ### Milestones & Sequencing
 
-1. **XX weeks** — Domain-based chat rooms with feature listing.
-2. **XX weeks** — Natural language feature discovery (“What’s in checkout?”).
-3. **XX weeks** — Inline feature definition templates + editing in chat.
-4. **XX weeks** — Backlog integration with Jira/Linear.
-5. **XX weeks** — Search and historical context retrieval.
+1. **2 weeks** — Domain-based chat context with feature listing.
+2. **2 weeks** — Natural language feature discovery (“What’s in checkout?”).
+3. **2 weeks** — Inline feature definition templates + editing in chat.
+4. **2 weeks** — Backlog integration with Jira/Linear.
+5. **2 weeks** — Search and historical context retrieval.
 
 ---
