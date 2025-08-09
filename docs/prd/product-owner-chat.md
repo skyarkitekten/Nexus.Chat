@@ -72,13 +72,42 @@ We need a single place where the history of feature decisions, the current state
 6. **Commit to backlog**: One-click action sends finalized feature definition to the backlog system with metadata and link to chat thread.
 7. **Searchable history**: At any time, user can search past threads for a feature name or keyword.
 
+Open domain chat (e.g., “Payments”).
+
+Existing feature list loads in a sidebar — each with title, owner, status, link to history.
+
+User proposes a feature: “We should add one-click checkout.”
+
+Agent runs semantic + lexical search:
+
+Finds similar features (“Instant Checkout” tested in 2022, “Express Pay” proposed in 2023).
+
+Surfaces summaries + decision outcomes inline.
+
+RAG-powered draft generation:
+
+Creates an initial feature definition including:
+
+Problem statement
+
+Acceptance criteria
+
+Suggested user stories
+
+Technical considerations (from historical data)
+
+Team refines in chat, tagging stakeholders.
+
+Finalized spec sent to backlog tool with link to conversation + search results.
+
 ---
 
 ### Success Metrics
 
 * **Time-to-definition**: Average time from idea → finalized feature spec (target: -40%).
-* **Duplication rate**: % of new ideas already existing in backlog (target: <5%).
-* **Engagement**: Weekly active contributors per domain chat.
+* **Duplication rate**: % of new ideas already existing in backlog (target: <10%).
+* **Historical context usage**: % of new features referencing past features (goal: >80%).
+* **Engagement**: Active chat contributors per domain per week.
 * **Adoption**: % of feature definitions created in chat vs. outside tools.
 
 ---
@@ -90,6 +119,12 @@ We need a single place where the history of feature decisions, the current state
 * **Search**: Indexed across chat logs + feature metadata for instant retrieval.
 * **Permissions**: Role-based access to certain domains and feature creation rights.
 * **AI assistance**: Optional — for auto-suggesting missing features or drafting definitions.
+* **Search engine**: Combined semantic (vector) + lexical (keyword) search pipeline.
+* **RAG pipeline**: Retrieves top N similar features → passes context to LLM → drafts spec.
+* **Data ingestion**: Ingests backlog items, PRDs, release notes, and decision logs.
+* **Integrations**: Jira/Linear push + bidirectional linking to conversation.
+* **Latency**: Retrieval + generation must complete <5 seconds for fluid UX.
+* **Permissions**: Feature history scoped to user’s access rights.
 
 ---
 
